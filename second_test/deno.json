@@ -7,6 +7,7 @@
     "@types/pg": "npm:@types/pg@^8.16.0",
     "drizzle-kit": "npm:drizzle-kit@^0.31.8",
     "drizzle-orm": "npm:drizzle-orm@^0.45.1",
-    "pg": "npm:pg@^8.18.0"
+    "pg": "npm:pg@^8.18.0",
+    "postgres": "npm:postgres@^3.4.8"
   }
 }

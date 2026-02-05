@@ -1,6 +1,6 @@
 import postgres from "postgres";
 import { drizzle } from "drizzle-orm/postgres-js";
-import * as schema from "../models/user.model";
+import * as schema from "../drizzle/schema.ts";
 
 const client = postgres("postgres://admin:admin@localhost:5432/testDenoApi");
 
