@@ -1,11 +1,12 @@
-import './App.css'
-import StComponent from './firstCustomComponent'
+import './App.css';
+import HomeScreen from './Share/home.screen';
+
 
 function App() {
-  return (
-    <div>
-      <StComponent></StComponent>
-    </div>
+return (
+  <div>
+    <HomeScreen></HomeScreen>
+  </div>
   )
 }
 
