@@ -5,6 +5,11 @@ import { eq } from "drizzle-orm";
 
 export const app = new Hono();
 const baseUrl: string = "/api/v1/users";
+const corsConfig = {
+  "Access-Control-Allow-Origin": "http://localhost:5173",
+  "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
+  "Access-Control-Allow-Headers": "Content-Type",
+};
 
 //To create a user
 app.post(baseUrl, async(c) =>{
@@ -14,7 +19,7 @@ app.post(baseUrl, async(c) =>{
         .values(body)
         .returning()
 
-    return c.json(newUser);
+    return c.json(newUser, { headers: corsConfig });
 });
 
 //To get all the users
@@ -23,7 +28,7 @@ app.get(baseUrl, async(c) => {
         .select()
         .from(users)
     
-    return c.json(allUsers);
+    return c.json(allUsers, { headers: corsConfig });
 });
 
 //To get a specific user
@@ -38,7 +43,7 @@ app.get(baseUrl + `/:id`, async(c) => {
         .from(users)
         .where(eq(users.id, id))
     
-    return c.json(user);
+    return c.json(user, { headers: corsConfig });
 })
 
 //To update a specific user
@@ -54,7 +59,7 @@ app.put(baseUrl + `/:id`, async(c) => {
         .set(body)
         .where(eq(users.id, id))
         .returning()
-    return c.json(updatedUser);
+    return c.json(updatedUser, { headers: corsConfig });
 })
 
 //To delete a specific user
@@ -69,5 +74,5 @@ app.delete(baseUrl + `/:id`, async(c) => {
         .where(eq(users.id, id))
         .returning()
 
-    return c.json({ message: "User deleted successfully" })
+    return c.json({ message: "User deleted successfully" }, { headers: corsConfig })
 })
